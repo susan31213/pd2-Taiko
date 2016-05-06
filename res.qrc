@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>start.png</file>
+        <file>taiko2.png</file>
+        <file>taiko11.png</file>
+        <file>taiko1s.png</file>
+        <file>taiko2s.png</file>
+        <file>bg1.png</file>
+        <file>player.png</file>
+        <file>hit1.png</file>
+        <file>hit2.png</file>
+        <file>ch1.gif</file>
+        <file>200.gif</file>
+        <file>resultbg.png</file>
+    </qresource>
+</RCC>
