@@ -25,6 +25,12 @@ Player::Player(QGraphicsItem *parent): QGraphicsPixmapItem(parent) {
 
     // start the timer
     timer->start(1000);
+
+    //hit sound
+    hitsound = new QMediaPlayer();
+    hit2sound = new QMediaPlayer();
+    hitsound->setMedia(QUrl("qrc:/sounds/hit.mp3"));
+    hit2sound->setMedia(QUrl("qrc:/sounds/hit2.mp3"));
 }
 
 void Player::keyPressEvent(QKeyEvent *event){
@@ -35,12 +41,28 @@ void Player::keyPressEvent(QKeyEvent *event){
         Hit * hit = new Hit();
         hit->setPos(x(),y());
         scene()->addItem(hit);
+
+        //play sound
+        if(hitsound->state() == QMediaPlayer::PlayingState) {
+            hitsound->setPosition(0);
+        }
+        else if (hitsound->state() == QMediaPlayer::StoppedState) {
+            hitsound->play();
+        }
     }
     else if (event->key() == Qt::Key_J)
     {
         Hit2 * hit2 = new Hit2();
         hit2->setPos(x(),y());
         scene()->addItem(hit2);
+
+        //play sound
+        if(hit2sound->state() == QMediaPlayer::PlayingState) {
+            hit2sound->setPosition(0);
+        }
+        else if (hit2sound->state() == QMediaPlayer::StoppedState) {
+            hit2sound->play();
+        }
     }
 }
 

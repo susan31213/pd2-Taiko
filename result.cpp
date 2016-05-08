@@ -3,6 +3,7 @@
 #include "game.h"
 #include <QMovie>
 #include <QLabel>
+#include <QMediaPlayer>
 
 extern Game *game;
 
@@ -12,8 +13,16 @@ Result::Result(QWidget *parent) :
     ui(new Ui::Result)
 {
     ui->setupUi(this);
+
+    //set sound
+    QMediaPlayer * bgm = new QMediaPlayer();
+    bgm->setMedia(QUrl("qrc:/sounds/gameover.mp3"));
+    bgm->play();
+
+    //copy score
     ss.score = game->score->score;
     ui->label->setText(QString("Score: ") + QString::number(ss.score));
+
     //gif
     QMovie *movie1 = new QMovie(":/images/ch1.gif");
     QLabel* label1 = new QLabel(this);

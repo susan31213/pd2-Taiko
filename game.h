@@ -17,7 +17,6 @@ public:
     // objects
     QGraphicsScene * scene;
     Player * player;
-    Taiko * taiko;
     Score * score;
     Time * mytime;
 

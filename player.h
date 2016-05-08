@@ -4,6 +4,7 @@
 #include <QGraphicsPixmapItem>
 #include <QObject>
 #include <QGraphicsItem>
+#include <QMediaPlayer>
 
 class Player:public QObject, public QGraphicsPixmapItem{
     Q_OBJECT
@@ -15,6 +16,9 @@ public:
 public slots:
     void spawn();
     void timego();
+private:
+    QMediaPlayer * hitsound;
+    QMediaPlayer * hit2sound;
 };
 
 #endif // PLAYER_H

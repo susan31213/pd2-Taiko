@@ -8,8 +8,10 @@
 #include <QImage>
 #include <QMovie>
 #include <QLabel>
+#include <QMediaPlayer>
 
 QTimer * tt;
+QMediaPlayer * music;
 
 Game::Game(QWidget * parent)
 {    
@@ -17,6 +19,7 @@ Game::Game(QWidget * parent)
     scene = new QGraphicsScene();
     scene->setSceneRect(0,0,1024,576); // make the scene
     scene->setBackgroundBrush (QBrush(QImage(":/images/bg1.png")));
+
     // make the newly created scene the scene to visualize (since Game is a QGraphicsView Widget,
     // it can be used to visualize scenes)
     setScene(scene);
@@ -55,21 +58,33 @@ Game::Game(QWidget * parent)
     label1->setMovie(movie1);
     movie1->start();
 
+    //bgm
+    music = new QMediaPlayer();
+    music->setMedia(QUrl("qrc:/sounds/bgsound.mp3"));
+    music->play();
+
 }
 
 void Game::gameOver()
 {
+    //stop timer and music
     tt->stop();
+    music->stop();
+
+    //creat a result window
     Result * rr = new Result();
     rr->show();
-
-    QString ss = QString("Score: ") + QString::number(score->score);
 }
 
 void Game::restart()
 {
+    //restart timer and music
     tt->start(1000);
+    music->play();
+    player->timerstart();
+
+    //reset score and time
     score->restart();
     mytime->restart();
-    player->timerstart();
+
 }

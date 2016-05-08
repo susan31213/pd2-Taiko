@@ -18,7 +18,7 @@ Hit2::Hit2(QGraphicsItem *parent)
     connect(timer,SIGNAL(timeout()),this,SLOT(check()));
 
     // start the timer
-    timer->start(80);
+    timer->start(50);
 }
 
 void Hit2::check()
