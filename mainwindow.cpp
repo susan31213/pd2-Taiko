@@ -39,7 +39,7 @@ void MainWindow::on_pushButton_clicked()
 {
     this->hide();
     bgm->stop();
-    game = new Game();
+    game = new Game(this);
     game->show();
 
 }
@@ -51,7 +51,7 @@ void MainWindow::on_pushButton_2_clicked()
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    how = new How();
+    how = new How(this);
     how->show();
 }
 

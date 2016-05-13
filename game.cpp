@@ -49,7 +49,7 @@ Game::Game(QWidget * parent)
     // spawn taiko
     tt = new QTimer();
     QObject::connect(tt,SIGNAL(timeout()),player,SLOT(spawn()));
-    tt->start(800);
+    tt->start(1000);
 
     //gif
     QMovie *movie1 = new QMovie(":/images/200.gif");
@@ -72,7 +72,7 @@ void Game::gameOver()
     music->stop();
 
     //creat a result window
-    Result * rr = new Result();
+    Result * rr = new Result(this);
     rr->show();
 }
 
